@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Artist Name | Merchandise</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<title>Artist Name | Merchandise</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-    <?php include 'inc/header.html'; ?>
+<div id="header"></div>
 
-    <section class="gallery">
-        <div class="card">
-            <div class="art">Artist's work</div>
-            <div class="price">Work name / price</div>
-        </div>
-        <div class="card">
-            <div class="art">Artist's work</div>
-            <div class="price">Work name / price</div>
-        </div>
-        <div class="card">
-            <div class="art">Artist's work</div>
-            <div class="price">Work name / price</div>
-        </div>
-        <div class="card">
-            <div class="art">Artist's work</div>
-            <div class="price">Work name / price</div>
-        </div>
-        <div class="card">
-            <div class="art">Artist's work</div>
-            <div class="price">Work name / price</div>
-        </div>
-        <div class="card">
-            <div class="art">Artist's work</div>
-            <div class="price">Work name / price</div>
-        </div>
-    </section>
+<section class="gallery">
+<div class="card">
+<div class="art">Artist's work</div>
+<div class="price">Work name / price</div>
+</div>
+<div class="card">
+<div class="art">Artist's work</div>
+<div class="price">Work name / price</div>
+</div>
+<div class="card">
+<div class="art">Artist's work</div>
+<div class="price">Work name / price</div>
+</div>
+<div class="card">
+<div class="art">Artist's work</div>
+<div class="price">Work name / price</div>
+</div>
+<div class="card">
+<div class="art">Artist's work</div>
+<div class="price">Work name / price</div>
+</div>
+<div class="card">
+<div class="art">Artist's work</div>
+<div class="price">Work name / price</div>
+</div>
+</section>
 
-    <?php include 'inc/footer.html'; ?>
+<div id="footer"></div>
+
+<script src="inc/include.js"></script>
+<script>
+loadHTML("header", "inc/header.html");
+loadHTML("footer", "inc/footer.html");
+</script>
 
 </body>
-
 </html>
