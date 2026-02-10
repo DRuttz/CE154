@@ -1,3 +1,6 @@
+/**
+ * Loads external HTML and initializes scripts only after content is ready
+ */
 function loadHTML(id, file) {
   fetch(file)
     .then(response => {
@@ -6,11 +9,28 @@ function loadHTML(id, file) {
     })
     .then(data => {
       document.getElementById(id).innerHTML = data;
-      if (id === "header") setActiveNav();
+
+      // Only run these once the HTML is actually in the DOM
+      if (id === "header") {
+        setActiveNav();
+      }
+      
+      // Initialize slideshow if it exists on the current page
+      if (document.getElementsByClassName("mySlides").length > 0) {
+        initSlideshow();
+      }
+      
+      // Update basket display if on the basket page
+      if (document.getElementById('basket-items-list')) {
+        displayBasket();
+      }
     })
     .catch(error => console.error(error));
 }
 
+/**
+ * Highlights the current page in the nav
+ */
 function setActiveNav() {
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
   const navLinks = document.querySelectorAll(".site-header nav a");
@@ -21,13 +41,14 @@ function setActiveNav() {
   });
 }
 
-// SLIDESHOW LOGIC
+/**
+ * SLIDESHOW LOGIC
+ */
 let slideIndex = 0;
 let slideTimer;
 
 function initSlideshow() {
-  // Clear any existing timer to prevent double-speed sliding
-  clearInterval(slideTimer);
+  clearInterval(slideTimer); // Prevent multiple timers
   showSlides(slideIndex);
   slideTimer = setInterval(() => plusSlides(1), 5000);
 }
@@ -39,7 +60,6 @@ function plusSlides(n) {
 function showSlides(n) {
   let slides = document.getElementsByClassName("mySlides");
   if (slides.length === 0) return;
-
   if (n >= slides.length) slideIndex = 0;
   if (n < 0) slideIndex = slides.length - 1;
 
@@ -49,17 +69,14 @@ function showSlides(n) {
   slides[slideIndex].style.display = "block";
 }
 
-// BASKET LOGIC
+/**
+ * BASKET LOGIC
+ */
 function addToBasket(name, price) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push({ name, price });
     localStorage.setItem('cart', JSON.stringify(cart));
     alert(name + " added to basket!");
-}
-
-function clearBasket() {
-    localStorage.removeItem('cart');
-    displayBasket();
 }
 
 function displayBasket() {
@@ -81,4 +98,7 @@ function displayBasket() {
     totalDisplay.innerText = `Total: £${total.toFixed(2)}`;
 }
 
-window.addEventListener('load', displayBasket);
+function clearBasket() {
+    localStorage.removeItem('cart');
+    displayBasket();
+}
