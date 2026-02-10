@@ -28,89 +28,93 @@ body {
   margin-left: 20px;
   text-decoration: none;
   color: #e5e5e5;
+  padding-bottom: 5px;
 }
 
 .site-header nav a:hover {
   color: #bdbdbd;
 }
 
-/* SECTIONS */
-.slideshow,
-.store-scroll,
-.about,
-.gallery,
-.basket {
+/* Highlighting fix */
+.site-header nav a.active {
+  border-bottom: 2px solid #e5e5e5;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* SLIDESHOW */
+.slideshow {
   background-color: #1e1e1e;
   border: 2px solid #333;
   margin: 30px;
   padding: 30px;
 }
 
-/* SLIDESHOW */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mySlides {
+  display: none; /* Hidden by default, JS shows them */
+}
+
 .slideshow-box {
   border: 2px solid #444;
-  height: 200px;
+  height: 300px; /* The Large Box */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  background-color: #2a2a2a;
   color: #aaa;
 }
 
-/* SCROLL STORE */
-.scroll-container {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
+.artist-name-badge {
+  background-color: #1c1c1c; /* The Smaller Box */
+  border: 1px solid #e5e5e5;
+  padding: 15px 30px;
+  color: #e5e5e5;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
-.item {
-  min-width: 200px;
-  height: 120px;
-  border: 2px solid #444;
-  background-color: #2a2a2a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Navigation Buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  user-select: none;
+  background-color: rgba(0,0,0,0.3);
+  text-decoration: none;
 }
 
-/* ABOUT */
-.about {
-  display: flex;
-  gap: 30px;
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev { left: 0; border-radius: 0 3px 3px 0; }
+.prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+
+/* Animation */
+.fade {
+  animation: fadeAnim 1.5s;
 }
 
-.portrait {
-  width: 300px;
-  height: 300px;
-  border: 2px solid #444;
-  background-color: #2a2a2a;
+@keyframes fadeAnim {
+  from {opacity: .4} 
+  to {opacity: 1}
 }
 
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.card {
-  border: 2px solid #444;
-  background-color: #2a2a2a;
-}
-
-.art {
-  height: 200px;
-  border-bottom: 2px solid #444;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #aaa;
-}
-
-.price {
-  padding: 15px;
-  text-align: center;
+/* OTHER SECTIONS */
+.store-scroll, .about, .gallery, .basket {
+  background-color: #1e1e1e;
+  border: 2px solid #333;
+  margin: 30px;
+  padding: 30px;
 }
 
 /* FOOTER */
@@ -121,62 +125,4 @@ body {
   padding: 15px;
   margin-top: 40px;
   color: #aaa;
-}
-
-.site-header nav a.active {
-  border-bottom: 2px solid #e5e5e5;
-}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-/* Hide slides by default */
-.mySlides {
-  display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-/* Add a fade animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* Ensure the slideshow box still looks good */
-.slideshow-box {
-  width: 100%;
-  background-color: #2a2a2a; /* Matches your card style */
-  border: 2px solid #444; /* Consistent with your site borders */
-}
-
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
 }
