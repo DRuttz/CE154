@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Artist Name | Home</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Artist Name | Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="inc/include.js" defer></script>
 </head>
-
 <body>
 
-    <?php include 'inc/header.html'; ?>
+<div id="header"></div>
 
-    <section class="slideshow">
-        <h2><span class="underline">Art work</span> slideshow</h2>
-        <div class="slideshow-box">Artist's name</div>
-    </section>
+<script>
+  loadHTML("header", "inc/header.html");
+</script>
 
-    <section class="store-scroll">
-        <h2>Scrollable store section (top picks / recents)</h2>
-        <div class="scroll-container">
-            <div class="item">Artwork</div>
-            <div class="item">Artwork</div>
-            <div class="item">Artwork</div>
-            <div class="item">Artwork</div>
-        </div>
-    </section>
+<section class="slideshow">
+  <h2><span class="underline">Art work</span> slideshow</h2>
+  <div class="slideshow-box">Artist's name</div>
+</section>
 
-    <?php include 'inc/footer.html'; ?>
+<section class="store-scroll">
+  <h2>Scrollable store section (top picks / recents)</h2>
+  <div class="scroll-container">
+    <div class="item">Artwork</div>
+    <div class="item">Artwork</div>
+    <div class="item">Artwork</div>
+  </div>
+</section>
+
+<div id="footer"></div>
+
+<script>
+  loadHTML("footer", "inc/footer.html");
+</script>
 
 </body>
-
 </html>
