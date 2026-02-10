@@ -41,27 +41,45 @@ function setActiveNav() {
   });
 }
 
-let slideIndex = 1;
+let slideIndex = 0;
+let slideTimer;
 
-// Initialize slideshow if the container exists on the page
-if (document.querySelector(".slideshow-container")) {
-    showSlides(slideIndex);
+// This function starts the slideshow process
+function initSlideshow() {
+    const slides = document.getElementsByClassName("mySlides");
+    if (slides.length > 0) {
+        showSlides();
+        // Start the automatic timer (5000ms = 5 seconds)
+        slideTimer = setInterval(() => plusSlides(1), 5000);
+    }
 }
 
-// Next/previous controls
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+    // Reset timer when user manually clicks so it doesn't skip immediately
+    clearInterval(slideTimer);
+    slideTimer = setInterval(() => plusSlides(1), 5000);
+    
+    showSlides(slideIndex += n);
 }
 
 function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  
-  slides[slideIndex-1].style.display = "flex"; 
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    
+    // Reset index if it goes out of bounds
+    if (n >= slides.length) { slideIndex = 0; }
+    if (n < 0) { slideIndex = slides.length - 1; }
+    if (n === undefined) { n = slideIndex; }
+
+    // Hide all slides
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    // Display the current slide
+    slides[slideIndex].style.display = "flex";
 }
+
+// Call the init function after the header/content is loaded
+// Since you use loadHTML for the header, call it there or in the window.onload
+window.addEventListener('load', initSlideshow);
