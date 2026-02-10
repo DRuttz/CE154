@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Artist Name | Home</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <?php include 'inc/header.html'; ?>
+
+    <section class="slideshow">
+        <h2><span class="underline">Art work</span> slideshow</h2>
+        <div class="slideshow-box">Artist's name</div>
+    </section>
+
+    <section class="store-scroll">
+        <h2>Scrollable store section (top picks / recents)</h2>
+        <div class="scroll-container">
+            <div class="item">Artwork</div>
+            <div class="item">Artwork</div>
+            <div class="item">Artwork</div>
+            <div class="item">Artwork</div>
+        </div>
+    </section>
+
+    <?php include 'inc/footer.html'; ?>
+
+</body>
+
+</html>

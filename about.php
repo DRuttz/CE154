@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Artist Name | About</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <?php include 'inc/header.html'; ?>
+
+    <section class="about">
+        <div class="portrait">Artist portrait</div>
+        <div class="bio">
+            <h2>Biography / Popular works</h2>
+            <p>
+                This section contains the artist biography, background,
+                inspiration, and a short list of popular works.
+            </p>
+        </div>
+    </section>
+
+    <?php include 'inc/footer.html'; ?>
+
+</body>
+
+</html>
