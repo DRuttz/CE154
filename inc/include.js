@@ -21,6 +21,34 @@ function setActiveNav() {
   });
 }
 
+// SLIDESHOW LOGIC
+let slideIndex = 0;
+let slideTimer;
+
+function initSlideshow() {
+  // Clear any existing timer to prevent double-speed sliding
+  clearInterval(slideTimer);
+  showSlides(slideIndex);
+  slideTimer = setInterval(() => plusSlides(1), 5000);
+}
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  let slides = document.getElementsByClassName("mySlides");
+  if (slides.length === 0) return;
+
+  if (n >= slides.length) slideIndex = 0;
+  if (n < 0) slideIndex = slides.length - 1;
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex].style.display = "block";
+}
+
 // BASKET LOGIC
 function addToBasket(name, price) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
