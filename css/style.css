@@ -42,27 +42,62 @@ body {
   font-weight: bold;
 }
 
-/* SLIDESHOW CONTAINER (The Large Box Area) */
+/* THE LARGE BOX CONTAINER */
 .slideshow {
-  background-color: #1e1e1e; /* Matches your section background */
+  background-color: #1e1e1e;
   border: 2px solid #333;
   margin: 30px;
   padding: 30px;
-  position: relative;
 }
 
 .slideshow-box {
-  background-color: #2a2a2a; /* Matches your item background */
+  background-color: #2a2a2a;
   border: 2px solid #444;
   height: 400px;
   width: 100%;
-  position: relative;
+  position: relative; /* Allows items to stack inside */
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; /* Clips the slides to the box */
 }
 
-/* "Art work slideshow" text in the top left per wireframe */
+/* THE BACKGROUND SLIDES */
+.mySlides {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Lowest layer */
+}
+
+.slide-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  color: #555; /* Subtle text for placeholders */
+}
+
+/* THE STATIC CENTER BOX */
+.artist-name-badge {
+  position: relative;
+  z-index: 10; /* Higher layer to stay on top of slides */
+  background-color: #1c1c1c;
+  border: 2px solid #e5e5e5;
+  padding: 40px 60px;
+  color: #e5e5e5;
+  font-size: 1.2rem;
+  text-align: center;
+  min-width: 250px;
+}
+
+/* TOP LEFT TITLE */
 .slideshow-title {
   position: absolute;
   top: 20px;
@@ -70,22 +105,11 @@ body {
   margin: 0;
   font-size: 1.2rem;
   color: #e5e5e5;
+  z-index: 15; /* Highest layer */
   font-weight: normal;
 }
 
-.underline {
-  text-decoration: underline;
-}
-
-/* The Smaller Box in the center */
-.artist-name-badge {
-  background-color: #1c1c1c; /* Slightly darker to pop against the #2a2a2a */
-  border: 1px solid #444;
-  padding: 30px 50px;
-  color: #e5e5e5;
-  font-size: 1.1rem;
-  text-align: center;
-}
+.underline { text-decoration: underline; }
 
 /* Navigation Buttons */
 .prev, .next {
@@ -95,22 +119,15 @@ body {
   transform: translateY(-50%);
   padding: 16px;
   color: #e5e5e5;
-  font-weight: bold;
   font-size: 24px;
-  user-select: none;
+  z-index: 20;
   text-decoration: none;
-  transition: 0.3s;
 }
-
 .next { right: 10px; }
 .prev { left: 10px; }
-.prev:hover, .next:hover { color: #bdbdbd; }
 
-/* Animation */
-.fade {
-  animation: fadeAnim 1s;
-}
-
+/* Fade Effect */
+.fade { animation: fadeAnim 1s; }
 @keyframes fadeAnim {
   from {opacity: .4} 
   to {opacity: 1}
