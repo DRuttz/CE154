@@ -122,3 +122,7 @@ body {
   margin-top: 40px;
   color: #aaa;
 }
+
+.site-header nav a.active {
+  border-bottom: 2px solid #e5e5e5;
+}
