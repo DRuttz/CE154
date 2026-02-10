@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Artist Name | Basket</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Artist Name | Basket</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div id="header"></div>
 
-<div id="header"></div>
+    <section class="basket-layout">
+        <div class="basket-options">
+            <h2>Basket options</h2>
+            <div id="basket-items-list">
+                </div>
+            <button class="btn" style="margin-top: 20px;" onclick="clearBasket()">Clear Basket</button>
+        </div>
+        <div class="checkout-box">
+            <h2>Total/checkout options</h2>
+            <p id="basket-total">Total: £0.00</p>
+            <button class="btn checkout-btn">Checkout</button>
+        </div>
+    </section>
 
-<section class="basket">
-<h2>Your Basket</h2>
-<p>No items added yet.</p>
-</section>
+    <div id="footer"></div>
 
-<div id="footer"></div>
-
-<script src="inc/include.js"></script>
-<script>
-loadHTML("header", "inc/header.html");
-loadHTML("footer", "inc/footer.html");
-</script>
-
+    <script src="inc/include.js"></script>
+    <script>
+        loadHTML("header", "inc/header.html");
+        loadHTML("footer", "inc/footer.html");
+        // Basket display logic is handled in include.js
+    </script>
 </body>
 </html>
