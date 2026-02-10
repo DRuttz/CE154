@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Artist Name | About</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<title>Artist Name | About</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-    <?php include 'inc/header.html'; ?>
+<div id="header"></div>
 
-    <section class="about">
-        <div class="portrait">Artist portrait</div>
-        <div class="bio">
-            <h2>Biography / Popular works</h2>
-            <p>
-                This section contains the artist biography, background,
-                inspiration, and a short list of popular works.
-            </p>
-        </div>
-    </section>
+<section class="about">
+<div class="portrait">Artist portrait</div>
+<div class="bio">
+<h2>Biography / Popular works</h2>
+<p>
+This section contains the artist biography, background,
+inspiration, and a short list of popular works.
+</p>
+</div>
+</section>
 
-    <?php include 'inc/footer.html'; ?>
+<div id="footer"></div>
+
+<script src="inc/include.js"></script>
+<script>
+loadHTML("header", "inc/header.html");
+loadHTML("footer", "inc/footer.html");
+</script>
 
 </body>
-
 </html>
