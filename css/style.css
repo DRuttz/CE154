@@ -1,86 +1,97 @@
 * {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+box-sizing: border-box;
+font-family: Arial, sans-serif;
 }
 
 body {
-    margin: 0;
+margin: 0;
 }
 
 .site-header {
-    border: 2px solid #000;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+border: 2px solid #000;
+padding: 15px 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
 .site-header nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: black;
+margin-left: 20px;
+text-decoration: none;
+color: black;
 }
 
-.slideshow,
-.store-scroll,
-.about,
-.gallery,
-.basket {
-    border: 2px solid #000;
-    margin: 30px;
-    padding: 30px;
+.slideshow, .store-scroll, .about, .gallery, .basket {
+border: 2px solid #000;
+margin: 30px;
+padding: 30px;
 }
 
 .slideshow-box {
-    border: 2px solid #000;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+border: 2px solid #000;
+height: 200px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 20px;
 }
 
 .scroll-container {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
+display: flex;
+gap: 20px;
+overflow-x: auto;
 }
 
 .item {
-    min-width: 200px;
-    height: 120px;
-    border: 2px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+min-width: 200px;
+height: 120px;
+border: 2px solid #000;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .about {
-    display: flex;
-    gap: 30px;
+display: flex;
+gap: 30px;
 }
 
 .portrait {
-    width: 300px;
-    height: 300px;
-    border: 2px solid #000;
+width: 300px;
+height: 300px;
+border: 2px solid #000;
 }
 
 .bio {
-    flex: 1;
+flex: 1;
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 30px;
 }
 
 .card {
-    border: 2px solid #000;
+border: 2px solid #000;
 }
 
 .art {
-    height: 200px;
-    border-bottom: 2px solid #000;
+height: 200px;
+border-bottom: 2px solid #000;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.price {
+padding: 15px;
+text-align: center;
+}
+
+.site-footer {
+border-top: 2px solid #000;
+text-align: center;
+padding: 15px;
+margin-top: 40px;
 }
