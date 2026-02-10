@@ -1,38 +1,56 @@
 function loadHTML(id, file) {
   fetch(file)
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) throw new Error("Failed to load " + file);
+      return response.text();
+    })
     .then(data => {
       document.getElementById(id).innerHTML = data;
       if (id === "header") setActiveNav();
-    });
+    })
+    .catch(error => console.error(error));
 }
 
 function setActiveNav() {
-  const path = window.location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll(".site-header nav a").forEach(link => {
-    if (link.getAttribute("href") === path) {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const navLinks = document.querySelectorAll(".site-header nav a");
+  navLinks.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
       link.classList.add("active");
     }
   });
 }
 
-let slideIndex = 0;
-function showSlides(n) {
-  let slides = document.getElementsByClassName("mySlides");
-  if (slides.length === 0) return;
-  if (n >= slides.length) slideIndex = 0;
-  if (n < 0) slideIndex = slides.length - 1;
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex].style.display = "block";
+// BASKET LOGIC
+function addToBasket(name, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name, price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(name + " added to basket!");
 }
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function clearBasket() {
+    localStorage.removeItem('cart');
+    displayBasket();
 }
 
-window.onload = function() {
-  showSlides(slideIndex);
-  setInterval(() => { plusSlides(1); }, 5000);
-};
+function displayBasket() {
+    const list = document.getElementById('basket-items-list');
+    const totalDisplay = document.getElementById('basket-total');
+    if (!list) return;
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let total = 0;
+
+    if (cart.length === 0) {
+        list.innerHTML = "<p>No items added yet.</p>";
+    } else {
+        list.innerHTML = cart.map(item => {
+            total += item.price;
+            return `<div class="basket-item">${item.name} - £${item.price.toFixed(2)}</div>`;
+        }).join('');
+    }
+    totalDisplay.innerText = `Total: £${total.toFixed(2)}`;
+}
+
+window.addEventListener('load', displayBasket);
