@@ -42,42 +42,49 @@ body {
   font-weight: bold;
 }
 
-/* SLIDESHOW */
+/* SLIDESHOW CONTAINER (The Large Box Area) */
 .slideshow {
-  background-color: #1e1e1e;
+  background-color: #1e1e1e; /* Matches your section background */
   border: 2px solid #333;
   margin: 30px;
   padding: 30px;
-}
-
-.slideshow-container {
   position: relative;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.mySlides {
-  display: none; /* Hidden by default, JS shows them */
 }
 
 .slideshow-box {
+  background-color: #2a2a2a; /* Matches your item background */
   border: 2px solid #444;
-  height: 300px; /* The Large Box */
+  height: 400px;
   width: 100%;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #2a2a2a;
-  color: #aaa;
 }
 
+/* "Art work slideshow" text in the top left per wireframe */
+.slideshow-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  margin: 0;
+  font-size: 1.2rem;
+  color: #e5e5e5;
+  font-weight: normal;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+/* The Smaller Box in the center */
 .artist-name-badge {
-  background-color: #1c1c1c; /* The Smaller Box */
-  border: 1px solid #e5e5e5;
-  padding: 15px 30px;
+  background-color: #1c1c1c; /* Slightly darker to pop against the #2a2a2a */
+  border: 1px solid #444;
+  padding: 30px 50px;
   color: #e5e5e5;
   font-size: 1.1rem;
-  font-weight: bold;
+  text-align: center;
 }
 
 /* Navigation Buttons */
@@ -87,21 +94,21 @@ body {
   top: 50%;
   transform: translateY(-50%);
   padding: 16px;
-  color: white;
+  color: #e5e5e5;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 24px;
   user-select: none;
-  background-color: rgba(0,0,0,0.3);
   text-decoration: none;
+  transition: 0.3s;
 }
 
-.next { right: 0; border-radius: 3px 0 0 3px; }
-.prev { left: 0; border-radius: 0 3px 3px 0; }
-.prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+.next { right: 10px; }
+.prev { left: 10px; }
+.prev:hover, .next:hover { color: #bdbdbd; }
 
 /* Animation */
 .fade {
-  animation: fadeAnim 1.5s;
+  animation: fadeAnim 1s;
 }
 
 @keyframes fadeAnim {
