@@ -1,7 +1,13 @@
-function loadHTML(elementId, file) {
+function loadHTML(id, file) {
   fetch(file)
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Failed to load " + file);
+      }
+      return response.text();
+    })
     .then(data => {
-      document.getElementById(elementId).innerHTML = data;
-    });
+      document.getElementById(id).innerHTML = data;
+    })
+    .catch(err => console.error(err));
 }
