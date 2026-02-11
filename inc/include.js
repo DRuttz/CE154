@@ -1,5 +1,5 @@
 /**
- * Loads external HTML and initializes scripts only after content is ready
+ * Loads external HTML and triggers dependent scripts
  */
 function loadHTML(id, file) {
   fetch(file)
@@ -10,47 +10,36 @@ function loadHTML(id, file) {
     .then(data => {
       document.getElementById(id).innerHTML = data;
 
-      // Only run these once the HTML is actually in the DOM
+      // 1. Handle Navigation Highlighting
       if (id === "header") {
         setActiveNav();
       }
       
-      // Initialize slideshow if it exists on the current page
-      if (document.getElementsByClassName("mySlides").length > 0) {
-        initSlideshow();
-      }
-      
-      // Update basket display if on the basket page
-      if (document.getElementById('basket-items-list')) {
-        displayBasket();
-      }
+      // 2. SAFETY CHECK: Try to start slideshow after every load
+      // This ensures if index.html is ready, the slideshow starts immediately
+      initSlideshow();
     })
     .catch(error => console.error(error));
 }
 
-/**
- * Highlights the current page in the nav
- */
-function setActiveNav() {
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-  const navLinks = document.querySelectorAll(".site-header nav a");
-  navLinks.forEach(link => {
-    if (link.getAttribute("href") === currentPage) {
-      link.classList.add("active");
-    }
-  });
-}
-
-/**
- * SLIDESHOW LOGIC
- */
 let slideIndex = 0;
-let slideTimer;
+let slideTimer = null; // Track the timer globally
 
 function initSlideshow() {
-  clearInterval(slideTimer); // Prevent multiple timers
-  showSlides(slideIndex);
-  slideTimer = setInterval(() => plusSlides(1), 5000);
+  const slides = document.getElementsByClassName("mySlides");
+  
+  // Only proceed if slides actually exist on this page
+  if (slides.length > 0) {
+    // Clear any old timers to prevent "double-speed" sliding
+    if (slideTimer) clearInterval(slideTimer);
+    
+    showSlides(slideIndex);
+    
+    // Set the new timer
+    slideTimer = setInterval(() => {
+      plusSlides(1);
+    }, 5000);
+  }
 }
 
 function plusSlides(n) {
@@ -60,6 +49,7 @@ function plusSlides(n) {
 function showSlides(n) {
   let slides = document.getElementsByClassName("mySlides");
   if (slides.length === 0) return;
+
   if (n >= slides.length) slideIndex = 0;
   if (n < 0) slideIndex = slides.length - 1;
 
@@ -69,36 +59,5 @@ function showSlides(n) {
   slides[slideIndex].style.display = "block";
 }
 
-/**
- * BASKET LOGIC
- */
-function addToBasket(name, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({ name, price });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(name + " added to basket!");
-}
-
-function displayBasket() {
-    const list = document.getElementById('basket-items-list');
-    const totalDisplay = document.getElementById('basket-total');
-    if (!list) return;
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let total = 0;
-
-    if (cart.length === 0) {
-        list.innerHTML = "<p>No items added yet.</p>";
-    } else {
-        list.innerHTML = cart.map(item => {
-            total += item.price;
-            return `<div class="basket-item">${item.name} - £${item.price.toFixed(2)}</div>`;
-        }).join('');
-    }
-    totalDisplay.innerText = `Total: £${total.toFixed(2)}`;
-}
-
-function clearBasket() {
-    localStorage.removeItem('cart');
-    displayBasket();
-}
+// Keep this for the very first page load
+window.addEventListener('load', initSlideshow);
