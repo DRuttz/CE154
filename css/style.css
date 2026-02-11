@@ -55,11 +55,12 @@ h2 {
   color: #ffffff;
 }
 
-/* The active class fix for navigation highlighting */
+
 .site-header nav a.active {
-  color: #ffffff;
-  border-bottom: 2px solid #e5e5e5;
-  font-weight: bold;
+  color: #ffffff !important;         
+  font-weight: bold;                
+  border-bottom: 2px solid #ffffff; 
+  padding-bottom: 5px;
 }
 
 /* ==========================================================================
