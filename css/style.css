@@ -8,18 +8,13 @@
 
 body {
   margin: 0;
-  background-color: #121212; /* Deep dark background */
-  color: #e5e5e5;            /* Light grey text for readability */
+  background-color: #121212;
+  color: #e5e5e5;
   line-height: 1.6;
 }
 
-h2 {
-  margin-top: 0;
-}
-
-.underline {
-  text-decoration: underline;
-}
+h2 { margin-top: 0; }
+.underline { text-decoration: underline; }
 
 /* ==========================================================================
    2. HEADER & NAVIGATION
@@ -34,6 +29,13 @@ h2 {
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
+}
+
+.site-header .logo {
+  font-weight: bold;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
 }
 
 .site-header nav a {
@@ -45,11 +47,9 @@ h2 {
   border-bottom: 2px solid transparent;
 }
 
-.site-header nav a:hover {
-  color: #ffffff;
-}
+.site-header nav a:hover { color: #ffffff; }
 
-/* Fix for the navigation highlighting logic in include.js */
+/* Highlight for current page */
 .site-header nav a.active {
   color: #ffffff !important;         
   font-weight: bold;                
@@ -58,7 +58,7 @@ h2 {
 }
 
 /* ==========================================================================
-   3. SLIDESHOW (Layering Fix)
+   3. SLIDESHOW (Layering)
    ========================================================================== */
 .slideshow {
   background-color: #1e1e1e;
@@ -72,34 +72,29 @@ h2 {
   border: 2px solid #444;
   height: 450px;
   width: 100%;
-  position: relative; /* Essential for absolute layering of children */
+  position: relative; /* Captures absolute children */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-/* The art work text in top-left - Wireframe 1 */
 .slideshow-title {
   position: absolute;
   top: 20px;
   left: 20px;
   margin: 0;
   font-size: 1.3rem;
-  z-index: 30; /* Stays above background slides */
+  z-index: 30; /* Top Layer */
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
-/* The background slides */
 .mySlides {
   display: none;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1; /* Lowest layer */
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1; /* Bottom Layer */
 }
 
 .slide-content {
@@ -107,13 +102,11 @@ h2 {
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
 }
 
-/* Static box in the center for Artist Name - Wireframe 1 */
 .artist-name-badge {
   position: relative;
-  z-index: 20; /* Sits above the slides but below navigation arrows if needed */
+  z-index: 20; /* Middle Layer - Sits on top of images */
   background-color: #ffffff;
   border: 2px solid #000;
   padding: 40px 60px;
@@ -124,7 +117,6 @@ h2 {
   letter-spacing: 2px;
 }
 
-/* Nav arrows */
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -132,17 +124,15 @@ h2 {
   transform: translateY(-50%);
   padding: 16px;
   color: white;
-  font-weight: bold;
-  font-size: 24px;
-  z-index: 40; /* Highest layer */
-  text-decoration: none;
+  z-index: 40;
   background: rgba(0,0,0,0.2);
+  text-decoration: none;
 }
 .prev { left: 0; }
 .next { right: 0; }
 
 /* ==========================================================================
-   4. MERCHANDISE & BASKET LAYOUTS
+   4. MERCHANDISE & BASKET
    ========================================================================== */
 .gallery {
   display: grid;
@@ -151,7 +141,6 @@ h2 {
   margin: 30px;
 }
 
-/* Basket Split Layout - Wireframe 4 */
 .basket-layout {
   display: flex;
   gap: 30px;
@@ -164,7 +153,6 @@ h2 {
   background-color: #1e1e1e;
   border: 2px solid #333;
   padding: 30px;
-  min-height: 400px;
 }
 
 .checkout-box {
@@ -184,7 +172,7 @@ h2 {
 }
 
 /* ==========================================================================
-   5. BUTTONS & UTILITIES
+   5. BUTTONS & FOOTER
    ========================================================================== */
 .btn {
   background-color: #e5e5e5;
@@ -198,56 +186,16 @@ h2 {
   transition: 0.2s;
 }
 
-.btn:hover {
-  background-color: #ffffff;
-}
+.btn:hover { background-color: #ffffff; }
 
-.fade {
-  animation: fadeEffect 0.8s;
-}
-
-@keyframes fadeEffect {
-  from { opacity: 0.4; }
-  to { opacity: 1; }
-}
-
-/* Header Layout */
-.site-header {
-  background-color: #1c1c1c; /* */
-  border-bottom: 2px solid #333; /* */
-  padding: 15px 30px; /* */
-  display: flex; /* */
-  justify-content: space-between; /* */
-  align-items: center; /* */
-  position: sticky; /* */
-  top: 0; /* */
-  z-index: 1000; /* */
-}
-
-/* Navigation Links */
-.site-header nav a {
-  margin-left: 20px; /* */
-  text-decoration: none; /* */
-  color: #e5e5e5; /* */
-  padding: 5px 0; /* */
-  transition: 0.3s; /* */
-  border-bottom: 2px solid transparent; /* */
-}
-
-/* Active Link Highlight - Controlled by include.js */
-.site-header nav a.active {
-  color: #ffffff !important; /* */
-  font-weight: bold; /* */
-  border-bottom: 2px solid #ffffff; /* */
-  padding-bottom: 5px; /* */
-}
-
-/* Footer Styling */
 .site-footer {
-  background-color: #1c1c1c; /* */
-  border-top: 2px solid #333; /* */
-  text-align: center; /* */
-  padding: 30px; /* */
-  margin-top: 50px; /* */
-  color: #888; /* */
+  background-color: #1c1c1c;
+  border-top: 2px solid #333;
+  text-align: center;
+  padding: 30px;
+  margin-top: 50px;
+  color: #888;
 }
+
+.fade { animation: fadeEffect 0.8s; }
+@keyframes fadeEffect { from { opacity: 0.4; } to { opacity: 1; } }
