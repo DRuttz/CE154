@@ -22,6 +22,25 @@ function loadHTML(id, file) {
     .catch(error => console.error(error));
 }
 
+function setActiveNav() {
+  // Get the current filename (e.g., "index.html" or "about.html")
+  const path = window.location.pathname;
+  const page = path.split("/").pop() || "index.html";
+
+  // Select all links inside the newly loaded header
+  const navLinks = document.querySelectorAll(".site-header nav a");
+
+  navLinks.forEach(link => {
+    // Remove active class from all first (cleanup)
+    link.classList.remove("active");
+    
+    // If the link's href matches our current page, add the class
+    if (link.getAttribute("href") === page) {
+      link.classList.add("active");
+    }
+  });
+}
+
 let slideIndex = 0;
 let slideTimer = null; // Track the timer globally
 
