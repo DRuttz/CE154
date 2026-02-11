@@ -1,6 +1,3 @@
-/**
- * Loads external HTML and triggers dependent scripts
- */
 function loadHTML(id, file) {
   fetch(file)
     .then(response => {
@@ -10,55 +7,51 @@ function loadHTML(id, file) {
     .then(data => {
       document.getElementById(id).innerHTML = data;
 
-      // 1. Handle Navigation Highlighting
+      // FIX: Only run these AFTER the HTML is actually on the page
       if (id === "header") {
         setActiveNav();
       }
       
-      // 2. SAFETY CHECK: Try to start slideshow after every load
-      // This ensures if index.html is ready, the slideshow starts immediately
-      initSlideshow();
+      // If we are on index.html, start the slideshow once the container is ready
+      if (document.querySelector(".mySlides")) {
+        initSlideshow();
+      }
     })
     .catch(error => console.error(error));
 }
 
 function setActiveNav() {
-  // Get the current filename (e.g., "index.html" or "about.html")
-  const path = window.location.pathname;
-  const page = path.split("/").pop() || "index.html";
+  // Extract the filename from the URL path (e.g., 'about.html')
+  let path = window.location.pathname;
+  let page = path.split("/").pop();
+  
+  // Default to index.html if path is empty (homepage)
+  if (page === "" || page === undefined) {
+    page = "index.html";
+  }
 
-  // Select all links inside the newly loaded header
   const navLinks = document.querySelectorAll(".site-header nav a");
 
   navLinks.forEach(link => {
-    // Remove active class from all first (cleanup)
-    link.classList.remove("active");
+    // Get just the filename from the link's href attribute
+    const linkHref = link.getAttribute("href");
     
-    // If the link's href matches our current page, add the class
-    if (link.getAttribute("href") === page) {
+    if (linkHref === page) {
       link.classList.add("active");
+    } else {
+      link.classList.remove("active");
     }
   });
 }
 
+// SLIDESHOW LOGIC
 let slideIndex = 0;
-let slideTimer = null; // Track the timer globally
+let slideTimer;
 
 function initSlideshow() {
-  const slides = document.getElementsByClassName("mySlides");
-  
-  // Only proceed if slides actually exist on this page
-  if (slides.length > 0) {
-    // Clear any old timers to prevent "double-speed" sliding
-    if (slideTimer) clearInterval(slideTimer);
-    
-    showSlides(slideIndex);
-    
-    // Set the new timer
-    slideTimer = setInterval(() => {
-      plusSlides(1);
-    }, 5000);
-  }
+  clearInterval(slideTimer); // Clear any old timers
+  showSlides(slideIndex);
+  slideTimer = setInterval(() => plusSlides(1), 5000);
 }
 
 function plusSlides(n) {
@@ -77,6 +70,3 @@ function showSlides(n) {
   }
   slides[slideIndex].style.display = "block";
 }
-
-// Keep this for the very first page load
-window.addEventListener('load', initSlideshow);
