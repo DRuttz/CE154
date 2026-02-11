@@ -8,14 +8,20 @@ function loadHTML(id, file) {
       return response.text();
     })
     .then(data => {
-      document.getElementById(id).innerHTML = data;
+      const container = document.getElementById(id);
+      container.innerHTML = data;
 
-      // Logic that must run AFTER the header is loaded
+      // CRITICAL FIX: Attach classes to the container so CSS can find them
       if (id === "header") {
+        container.classList.add("site-header"); 
         setActiveNav();
       }
       
-      // Check for slideshow or basket elements every time a component loads
+      if (id === "footer") {
+        container.classList.add("site-footer");
+      }
+      
+      // Initialize interactive elements
       if (document.querySelector(".mySlides")) {
         initSlideshow();
       }
