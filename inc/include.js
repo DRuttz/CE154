@@ -70,3 +70,54 @@ function showSlides(n) {
   }
   slides[slideIndex].style.display = "block";
 }
+
+/**
+ * Adds an item to the basket using URL parameters
+ */
+function addToBasket() {
+    // 1. Get the name and price from the URL (?name=Work%20One&price=45)
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name') || "Unknown Item";
+    const price = parseFloat(params.get('price')) || 0;
+
+    // 2. Get existing cart from LocalStorage or start a new array
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // 3. Add the new item
+    cart.push({ name, price });
+
+    // 4. Save it back to LocalStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    alert(name + " has been added to your basket!");
+}
+
+/**
+ * Displays the items on the basket.html page
+ */
+function displayBasket() {
+    const list = document.getElementById('basket-items-list');
+    const totalDisplay = document.getElementById('basket-total');
+    
+    if (!list) return; // Exit if we aren't on the basket page
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let total = 0;
+
+    if (cart.length === 0) {
+        list.innerHTML = "<p>Your basket is currently empty.</p>";
+    } else {
+        list.innerHTML = cart.map((item, index) => {
+            total += item.price;
+            return `
+                <div class="basket-item">
+                    <span>${item.name}</span>
+                    <span>£${item.price.toFixed(2)}</span>
+                </div>`;
+        }).join('');
+    }
+    
+    if (totalDisplay) {
+        totalDisplay.innerText = `Total: £${total.toFixed(2)}`;
+    }
+}
