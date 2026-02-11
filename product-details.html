@@ -9,13 +9,12 @@
     <div id="header"></div>
 
     <section class="product-detail">
-        <div class="large-art">Art</div>
-        <div class="details-box">
-            <h2 id="detail-title">Work name / price</h2>
-            <p>Additional information about the artist's inspiration and the medium of the work.</p>
-            <button class="btn" onclick="addToBasketFromPage()">Add to Basket</button>
-        </div>
-    </section>
+    <div class="large-art">Art Preview</div>
+    <div class="details-box">
+        <h2 id="product-display">Loading...</h2>
+        <button class="btn" onclick="addToBasket()">Add to Basket</button>
+    </div>
+</section>
 
     <div id="footer"></div>
 
@@ -23,18 +22,13 @@
     <script>
         loadHTML("header", "inc/header.html");
         loadHTML("footer", "inc/footer.html");
-
-        // Display current product info from URL
-        const params = new URLSearchParams(window.location.search);
-        if(params.has('name')) {
-            document.getElementById('detail-title').innerText = `${params.get('name')} - £${params.get('price')}`;
-        }
-
-        function addToBasketFromPage() {
-            const name = params.get('name') || "Unknown Item";
-            const price = parseFloat(params.get('price')) || 0;
-            addToBasket(name, price);
-        }
-    </script>
+    // This small script updates the text on the page so the user sees what they clicked
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    const price = params.get('price');
+    if(name && price) {
+        document.getElementById('product-display').innerText = name + " - £" + price;
+    }
+</script>
 </body>
 </html>
