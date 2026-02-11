@@ -210,3 +210,44 @@ h2 {
   from { opacity: 0.4; }
   to { opacity: 1; }
 }
+
+/* Header Layout */
+.site-header {
+  background-color: #1c1c1c; /* */
+  border-bottom: 2px solid #333; /* */
+  padding: 15px 30px; /* */
+  display: flex; /* */
+  justify-content: space-between; /* */
+  align-items: center; /* */
+  position: sticky; /* */
+  top: 0; /* */
+  z-index: 1000; /* */
+}
+
+/* Navigation Links */
+.site-header nav a {
+  margin-left: 20px; /* */
+  text-decoration: none; /* */
+  color: #e5e5e5; /* */
+  padding: 5px 0; /* */
+  transition: 0.3s; /* */
+  border-bottom: 2px solid transparent; /* */
+}
+
+/* Active Link Highlight - Controlled by include.js */
+.site-header nav a.active {
+  color: #ffffff !important; /* */
+  font-weight: bold; /* */
+  border-bottom: 2px solid #ffffff; /* */
+  padding-bottom: 5px; /* */
+}
+
+/* Footer Styling */
+.site-footer {
+  background-color: #1c1c1c; /* */
+  border-top: 2px solid #333; /* */
+  text-align: center; /* */
+  padding: 30px; /* */
+  margin-top: 50px; /* */
+  color: #888; /* */
+}
