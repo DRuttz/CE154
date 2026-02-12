@@ -17,7 +17,7 @@
         <button class="btn" onclick="addToBasket()">Add to Basket</button>
     </div>
 </section>
-
+<div id="footer"></div>div>
 <script>
     // 1. Your Data Object
     const productData = {
@@ -50,9 +50,12 @@
     } else {
         document.getElementById('p-desc').innerText = "Detailed description coming soon.";
     }
-
+</script>
+    <script src="inc/include.js"></script>
+<script>
+    // Ensure these paths match your folder structure exactly
     loadHTML("header", "inc/header.html");
-  loadHTML("footer", "inc/footer.html");
+    loadHTML("footer", "inc/footer.html");
 </script>
 </body>
 </html>
