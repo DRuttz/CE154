@@ -1,0 +1,48 @@
+﻿<!-- Registration Number: REPLACE_WITH_YOUR_REG_NUMBER -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Merchandise detail page with product metadata and basket action.">
+  <title>Nocturne Atelier | Product Details</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Shared site header include -->
+  <div id="header"></div>
+
+  <main>
+    <!-- Product detail section includes required fields: id, title, description, type, date, thumbnail -->
+    <section class="product-layout" aria-labelledby="product-title">
+      <div>
+        <!-- Image source credit: dynamically loaded from course starter pack files in images/ -->
+        <img id="product-image" src="images/ss1.webp" alt="Product thumbnail image">
+      </div>
+
+      <article>
+        <p class="eyebrow">Merchandise Detail</p>
+        <h1 id="product-title" class="section-title">Loading product...</h1>
+        <p id="product-description" class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+        <ul class="spec-list" aria-label="Product metadata">
+          <li><strong>ID:</strong><span id="product-id">-</span></li>
+          <li><strong>Type:</strong><span id="product-type">-</span></li>
+          <li><strong>Published Date:</strong><span id="product-date">-</span></li>
+          <li><strong>Price:</strong><span id="product-price">-</span></li>
+        </ul>
+
+        <p style="margin-top: 18px;">
+          <button id="add-to-basket" class="btn btn-primary" type="button" aria-label="Add current product to basket">Add to Basket</button>
+          <a class="btn btn-muted" href="merchandise.html" aria-label="Return to merchandise listing">Back to Listing</a>
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Shared site footer include -->
+  <div id="footer"></div>
+
+  <script src="inc/include.js"></script>
+</body>
+</html>

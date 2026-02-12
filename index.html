@@ -1,0 +1,71 @@
+﻿<!-- Registration Number: REPLACE_WITH_YOUR_REG_NUMBER -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio homepage and featured artist merchandise for Nocturne Atelier.">
+  <title>Nocturne Atelier | Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Shared site header include -->
+  <div id="header"></div>
+
+  <main>
+    <!-- Hero section with artist introduction and slideshow -->
+    <section class="hero" aria-labelledby="home-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Contemporary Visual Artist</p>
+          <h1 id="home-title">Nocturne Atelier Portfolio Store</h1>
+          <p class="muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra arcu vitae sem faucibus,
+            quis luctus erat tincidunt. Explore featured works and limited merchandise editions.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="merchandise.html" aria-label="Browse all merchandise">Browse Merchandise</a>
+            <a class="btn btn-muted" href="about.html" aria-label="Read artist biography">About the Artist</a>
+          </div>
+        </div>
+
+        <div class="slideshow" aria-label="Featured artwork slideshow">
+          <!-- Image source credit: course starter pack image file images/ss1.webp -->
+          <article class="slide active">
+            <img src="images/ss1.webp" alt="Featured artwork preview one">
+            <div class="slide-caption">Featured Work I</div>
+          </article>
+          <!-- Image source credit: course starter pack image file images/ss2.jpg -->
+          <article class="slide">
+            <img src="images/ss2.jpg" alt="Featured artwork preview two">
+            <div class="slide-caption">Featured Work II</div>
+          </article>
+          <button id="slide-prev" class="slide-nav slide-prev" type="button" aria-label="Show previous slide">&#10094;</button>
+          <button id="slide-next" class="slide-nav slide-next" type="button" aria-label="Show next slide">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supporting homepage content blocks -->
+    <section class="home-panels" aria-label="Highlights">
+      <article class="panel">
+        <h2 class="section-title">Studio Notes</h2>
+        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non velit in ex tempus facilisis.</p>
+      </article>
+      <article class="panel">
+        <h2 class="section-title">Limited Drops</h2>
+        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacinia fermentum neque.</p>
+      </article>
+      <article class="panel">
+        <h2 class="section-title">Collector Support</h2>
+        <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet odio vel faucibus sodales.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Shared site footer include -->
+  <div id="footer"></div>
+
+  <script src="inc/include.js"></script>
+</body>
+</html>
