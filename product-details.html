@@ -8,26 +8,47 @@
 <body>
     <div id="header"></div>
 
-    <section class="product-detail">
+   <section class="product-detail">
     <div class="large-art">Art Preview</div>
     <div class="details-box">
-        <h2 id="product-display">Loading...</h2>
+        <h2 id="p-title">Loading...</h2>
+        <p id="p-desc" style="color: #bdbdbd; font-style: italic;"></p>
+        <p id="p-specs" style="font-size: 0.9rem; color: #888;"></p>
         <button class="btn" onclick="addToBasket()">Add to Basket</button>
     </div>
 </section>
 
-    <div id="footer"></div>
+<script>
+    // 1. Your Data Object
+    const productData = {
+        "work1": {
+            description: "This piece explores the intersection of organic forms and industrial decay.",
+            specs: "Size: 24x36 inches | Medium: Mixed Media"
+        },
+        "work2": {
+            description: "A surrealist study of light and shadow, inspired by cityscapes.",
+            specs: "Size: 18x24 inches | Medium: Oil on Canvas"
+        }
+        // Add all 6 items here...
+    };
 
-    <script src="inc/include.js"></script>
-    <script>
-        loadHTML("header", "inc/header.html");
-        loadHTML("footer", "inc/footer.html");
-    // This small script updates the text on the page so the user sees what they clicked
+    // 2. Get URL Parameters
     const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
     const name = params.get('name');
     const price = params.get('price');
-    if(name && price) {
-        document.getElementById('product-display').innerText = name + " - £" + price;
+
+    // 3. Update Title & Price
+    if (name && price) {
+        document.getElementById('p-title').innerText = `${name} - £${price}`;
+    }
+
+    // 4. Update Description based on the ID
+    if (id && productData[id]) {
+        document.getElementById('p-desc').innerText = productData[id].description;
+        document.getElementById('p-specs').innerText = productData[id].specs;
+    } else {
+        document.getElementById('p-desc').innerText = "Detailed description coming soon.";
     }
 </script>
 </body>
