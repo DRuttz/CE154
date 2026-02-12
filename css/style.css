@@ -26,7 +26,8 @@ h2 { margin-top: 0; }
 .basket-layout,
 .about {
   flex: 1 0 auto;
-   padding: 30px;
+   padding: 40px 10%;
+  width: 100%;
 }
 
 /* ==========================================================================
