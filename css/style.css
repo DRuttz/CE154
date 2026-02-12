@@ -79,7 +79,7 @@ h2 { margin-top: 0; }
 .slideshow {
   background-color: #1e1e1e;
   border: 2px solid #333;
-  margin: 30px;
+   width: 100%;
   padding: 30px;
 }
 
