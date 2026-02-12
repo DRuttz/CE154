@@ -11,8 +11,6 @@ body {
   background-color: #121212;
   color: #e5e5e5;
   line-height: 1.6;
-   padding: 15px 30px;
-
    display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -28,6 +26,7 @@ h2 { margin-top: 0; }
 .basket-layout,
 .about {
   flex: 1 0 auto;
+   padding: 30px;
 }
 
 /* ==========================================================================
