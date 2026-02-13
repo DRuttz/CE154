@@ -1,4 +1,4 @@
-﻿/* Registration Number: REPLACE_WITH_YOUR_REG_NUMBER */
+﻿/* DR24365 */
 /* ==========================================================================
    Shared Data for Merchandise and Product Detail Pages
    ========================================================================== */
@@ -312,5 +312,6 @@ document.addEventListener("DOMContentLoaded", () => {
     clearBtn.addEventListener("click", clearBasket);
   }
 });
+
 
 
