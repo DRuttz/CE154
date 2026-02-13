@@ -9,39 +9,39 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Shared site header include -->
+  <!-- Site header -->
   <div id="header"></div>
 
   <main>
-    <!-- Basket page supports edit and remove item interactions -->
-    <section class="basket-layout" aria-labelledby="basket-heading">
+    <!-- basket list -->
+    <section class="basket-layout" >
       <div class="basket-card">
-        <h1 id="basket-heading" class="section-title">Your Basket</h1>
+      <h1 id="basket-heading" class="section-title">Your Basket</h1>
         <p class="muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Update quantities or remove any item before checkout.</p>
         <div id="basket-items-list"></div>
       </div>
-
-      <aside class="checkout-card" aria-label="Checkout summary">
+<!-- checkout area-->
+      <aside class="checkout-card">
         <h2 class="section-title">Checkout</h2>
         <div class="total-row">
           <span>Total:</span>
-          <strong id="basket-total">£0.00</strong>
-        </div>
+         <strong id="basket-total">£0.00</strong>
+       </div>
         <p style="margin-top: 16px;" class="muted">No live payment is required for this assignment.</p>
         <p style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
           <button id="clear-basket" class="btn btn-danger" type="button" aria-label="Clear all basket items">Clear Basket</button>
-          <button class="btn btn-muted" type="button" aria-label="Proceed to checkout mock action">Checkout</button>
+        <button class="btn btn-muted" type="button" aria-label="Proceed to checkout mock action">Checkout</button>
         </p>
       </aside>
-    </section>
-  </main>
+    </section> </main>
 
-  <!-- Shared site footer include -->
+  <!--site footer -->
   <div id="footer"></div>
 
   <script src="inc/include.js"></script>
 </body>
 </html>
+
 
 
 
