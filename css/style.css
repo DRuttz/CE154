@@ -1,7 +1,4 @@
 ﻿/* DR24365 */
-/* ==========================================================================
-   Global Theme, Layout, and Accessibility
-   ========================================================================== */
 :root {
   --bg: #0f1117;
   --bg-soft: #151926;
@@ -30,11 +27,11 @@ body {
 
 body {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  color: var(--text);
+  color: var;
   background:
     radial-gradient(circle at 15% 20%, rgba(216, 165, 74, 0.2), transparent 28%),
     radial-gradient(circle at 85% 80%, rgba(73, 95, 142, 0.28), transparent 30%),
-    var(--bg);
+    var;
   line-height: 1.6;
   min-height: 100vh;
 }
@@ -71,9 +68,6 @@ main {
   color: var(--text-muted);
 }
 
-/* ==========================================================================
-   Header and Navigation
-   ========================================================================== */
 #header {
   position: sticky;
   top: 0;
@@ -127,9 +121,7 @@ main {
   color: var(--text);
 }
 
-/* ==========================================================================
-   Home
-   ========================================================================== */
+/* home page */
 .hero {
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -242,9 +234,7 @@ main {
   padding: 18px;
 }
 
-/* ==========================================================================
-   About
-   ========================================================================== */
+/* about poage= */
 .about-card {
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -277,9 +267,7 @@ main {
   font-size: 0.9rem;
 }
 
-/* ==========================================================================
-   Merchandise Grid
-   ========================================================================== */
+/* merchandise page */
 .merch-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -314,9 +302,7 @@ main {
   font-size: 0.9rem;
 }
 
-/* ==========================================================================
-   Product Details
-   ========================================================================== */
+/* details page */
 .product-layout {
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -348,9 +334,7 @@ main {
   margin-right: 8px;
 }
 
-/* ==========================================================================
-   Basket
-   ========================================================================== */
+/* basket page */
 .basket-layout {
   display: grid;
   grid-template-columns: 1.7fr 1fr;
@@ -394,9 +378,7 @@ main {
   font-size: 1.1rem;
 }
 
-/* ==========================================================================
-   Buttons and Footer
-   ========================================================================== */
+/* buttons and footers */
 .btn {
   display: inline-block;
   border: 0;
@@ -455,9 +437,7 @@ main {
   border-radius: 999px;
 }
 
-/* ==========================================================================
-   Layout
-   ========================================================================== */
+/* overall layout */
 @media (max-width: 900px) {
   .hero-grid,
   .product-layout,
@@ -498,5 +478,6 @@ main {
     text-align: center;
   }
 }
+
 
 
