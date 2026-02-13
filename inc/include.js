@@ -83,6 +83,7 @@ function loadHTML(id, file) {
     })
     .catch((error) => console.error(error));
 }
+/* function to highlight current page*/
 function setActiveNav() {
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
   const navLinks = document.querySelectorAll(".nav-list a");
@@ -104,6 +105,7 @@ function initSlideshow() {
   if (!slides.length) {
     return;
   }
+  
   showSlide(0);
   if (slideTimer) {
     clearInterval(slideTimer);
@@ -114,8 +116,7 @@ function initSlideshow() {
 function showSlide(index) {
   const slides = document.querySelectorAll(".slide");
   if (!slides.length) {
-    return;
-  }
+    return;}
   if (index >= slides.length) {
     slideIndex = 0;
   } else if (index < 0) {
@@ -132,6 +133,26 @@ function showSlide(index) {
 function moveSlide(step) {
   showSlide(slideIndex + step);
 }
+
+/* listeners for navigation and slideshow on homescreen*/
+document.addEventListener("DOMContentLoaded", () => {
+  loadHTML("header", "inc/header.html");
+  loadHTML("footer", "inc/footer.html");
+  initSlideshow();
+  initProductDetails();
+  displayBasket();
+  const slidePrev = document.getElementById("slide-prev");
+  const slideNext = document.getElementById("slide-next");
+  if (slidePrev) {
+    slidePrev.addEventListener("click", () => moveSlide(-1));}
+  if (slideNext) {
+    slideNext.addEventListener("click", () => moveSlide(1));
+  }
+  const clearBtn = document.getElementById("clear-basket");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", clearBasket);
+  }
+});
 
 /* loads product details */
 function initProductDetails() {
@@ -151,7 +172,7 @@ function initProductDetails() {
     }
     return;
   }
-
+/* fetches details and images about the products from the list at the top to display on the details page */
   document.getElementById("product-id").textContent = product.id;
   document.getElementById("product-title").textContent = product.title;
   document.getElementById("product-description").textContent = product.description;
@@ -159,145 +180,20 @@ function initProductDetails() {
   document.getElementById("product-date").textContent = product.publishedDate;
   document.getElementById("product-price").textContent = `£${product.price.toFixed(2)}`;
    
-
   const productImage = document.getElementById("product-image");
   if (productImage) {
     productImage.src = product.image;
     productImage.alt = `${product.title} thumbnail image`;
   }
 
-  const addButton = document.getElementById("add-to-basket");
+ /* non functional add to basket function
+ const addButton = document.getElementById("add-to-basket");
   if (addButton) {
     addButton.addEventListener("click", () => addToBasket(product.id));
   }
-}
-
-/* basket functions */
-function getCart() {
-  return JSON.parse(localStorage.getItem("cart") || "[]");
-}
+}*/
 
 
-function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-function addToBasket(productId) {
-  const product = STORE_PRODUCTS[productId];
-  if (!product) {
-    return;
-  }
-
-  const cart = getCart();
-  const existing = cart.find((item) => item.id === productId);
-
-  if (existing) {
-    existing.qty += 1;
-  } else {
-    cart.push({ id: product.id, title: product.title, price: product.price, qty: 1 });
-  }
-
-  saveCart(cart);
-  alert(`${product.title} added to basket.`);
-}
-
-function updateQty(productId, qty) {
-  const parsed = Number(qty);
-  const cart = getCart();
-  const item = cart.find((entry) => entry.id === productId);
-
-  if (!item) {
-    return;
-  }
-
-   
-  if (Number.isNaN(parsed) || parsed <= 0) {
-    const filtered = cart.filter((entry) => entry.id !== productId);
-    saveCart(filtered);
-  } else {
-    item.qty = Math.floor(parsed);
-    saveCart(cart);
-  }
-
-  displayBasket();
-}
-
-function removeItem(productId) {
-  const cart = getCart().filter((item) => item.id !== productId);
-  saveCart(cart);
-  displayBasket();
-}
-
-function clearBasket() {
-  localStorage.removeItem("cart");
-  displayBasket();
-}
-
-function displayBasket() {
-  const list = document.getElementById("basket-items-list");
-  const totalElement = document.getElementById("basket-total");
-  if (!list || !totalElement) {
-    return;
-  }
-
-  const cart = getCart();
-  if (!cart.length) {
-    list.innerHTML = '<p class="muted">Your basket is currently empty.</p>';
-    totalElement.textContent = "£0.00";
-    return;
-  }
-
-  let total = 0;
-
-  list.innerHTML = cart
-    .map((item) => {
-      total += item.price * item.qty;
-      return `
-        <div class="basket-item">
-         <div>
-            <strong>${item.title}</strong><br>
-            <span class="muted">£${item.price.toFixed(2)} each</span>
-          </div>
-          <label>
-            Qty
-            <input
-              class="qty-input"
-              type="number"
-              min="1"
-              value="${item.qty}"
-              aria-label="Quantity for ${item.title}"
-              onchange="updateQty('${item.id}', this.value)"
-            >
-          </label>
-          <strong>£${(item.price * item.qty).toFixed(2)}</strong>
-         <button class="btn btn-danger" type="button" onclick="removeItem('${item.id}')">Remove</button>
-        </div>
-      `;
-    })
-    .join("");
-
-  totalElement.textContent = `£${total.toFixed(2)}`;
-}
-
-/* listeners */
-document.addEventListener("DOMContentLoaded", () => {
-  loadHTML("header", "inc/header.html");
-  loadHTML("footer", "inc/footer.html");
-  initSlideshow();
-  initProductDetails();
-  displayBasket();
-  const slidePrev = document.getElementById("slide-prev");
-  const slideNext = document.getElementById("slide-next");
-  if (slidePrev) {
-    slidePrev.addEventListener("click", () => moveSlide(-1));
-  }
-  if (slideNext) {
-    slideNext.addEventListener("click", () => moveSlide(1));
-  }
-  const clearBtn = document.getElementById("clear-basket");
-  if (clearBtn) {
-    clearBtn.addEventListener("click", clearBasket);
-  }
-});
 
 
 
