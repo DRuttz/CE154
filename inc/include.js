@@ -134,26 +134,6 @@ function moveSlide(step) {
   showSlide(slideIndex + step);
 }
 
-/* listeners for navigation and slideshow on homescreen*/
-document.addEventListener("DOMContentLoaded", () => {
-  loadHTML("header", "inc/header.html");
-  loadHTML("footer", "inc/footer.html");
-  initSlideshow();
-  initProductDetails();
-  displayBasket();
-  const slidePrev = document.getElementById("slide-prev");
-  const slideNext = document.getElementById("slide-next");
-  if (slidePrev) {
-    slidePrev.addEventListener("click", () => moveSlide(-1));}
-  if (slideNext) {
-    slideNext.addEventListener("click", () => moveSlide(1));
-  }
-  const clearBtn = document.getElementById("clear-basket");
-  if (clearBtn) {
-    clearBtn.addEventListener("click", clearBasket);
-  }
-});
-
 /* loads product details */
 function initProductDetails() {
   const titleElement = document.getElementById("product-title");
@@ -193,8 +173,22 @@ function initProductDetails() {
   }
 }*/
 
-
-
-
-
-
+  /* listeners for navigation and slideshow on homescreen*/
+document.addEventListener("DOMContentLoaded", () => {
+  loadHTML("header", "inc/header.html");
+  loadHTML("footer", "inc/footer.html");
+  initSlideshow();
+  initProductDetails();
+  displayBasket();
+  const slidePrev = document.getElementById("slide-prev");
+  const slideNext = document.getElementById("slide-next");
+  if (slidePrev) {
+    slidePrev.addEventListener("click", () => moveSlide(-1));}
+  if (slideNext) {
+    slideNext.addEventListener("click", () => moveSlide(1));
+  }
+  const clearBtn = document.getElementById("clear-basket");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", clearBasket);
+  }
+});
