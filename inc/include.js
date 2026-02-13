@@ -170,9 +170,8 @@ function initProductDetails() {
  const addButton = document.getElementById("add-to-basket");
   if (addButton) {
     addButton.addEventListener("click", () => addToBasket(product.id));
-  }
-}*/
-
+  }*/
+}
   /* listeners for navigation and slideshow on homescreen*/
 document.addEventListener("DOMContentLoaded", () => {
   loadHTML("header", "inc/header.html");
@@ -192,3 +191,4 @@ document.addEventListener("DOMContentLoaded", () => {
     clearBtn.addEventListener("click", clearBasket);
   }
 });
+
