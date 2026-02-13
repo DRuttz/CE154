@@ -5,11 +5,11 @@
 const STORE_PRODUCTS = {
   "1": {
     id: "1",
-    title: "Obsidian Echo T-Shirt",
+    title: "Horror T-Shirt",
     type: "Apparel",
     price: 29.0,
     publishedDate: "2025-03-14",
-    image: "images/ss1.webp",
+    image: "images/tshirt.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere dictum est, eu dictum ligula volutpat vitae. Aenean placerat pulvinar lectus in finibus."
   },
@@ -312,3 +312,4 @@ document.addEventListener("DOMContentLoaded", () => {
     clearBtn.addEventListener("click", clearBasket);
   }
 });
+
