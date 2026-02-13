@@ -1,13 +1,11 @@
 ﻿/* DR24365 */
-/* ==========================================================================
-   Shared Data for Merchandise and Product Detail Pages
-   ========================================================================== */
+/* listings details */
 const STORE_PRODUCTS = {
   "1": {
     id: "1",
     title: "Horror T-Shirt",
     type: "Apparel",
-    price: 29.0,
+    price:29.0,
     publishedDate: "2025-03-14",
     image: "images/tshirt.jpg",
     description:
@@ -28,7 +26,7 @@ const STORE_PRODUCTS = {
     title: "Horror Mug",
     type: "Homeware",
     price: 16.5,
-    publishedDate: "2025-05-11",
+    publishedDate:"2025-05-11",
     image: "images/mug.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula enim quis risus dignissim, ac tincidunt lorem tincidunt. Cras iaculis sem nec leo volutpat."
@@ -59,15 +57,12 @@ const STORE_PRODUCTS = {
     type: "Accessories",
     price: 24.0,
     publishedDate: "2025-09-17",
-    image: "images/tote.jpg",
+    image:"images/tote.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac enim eget lectus luctus ultrices. Aenean congue dignissim efficitur."
   }
 };
-
-/* ==========================================================================
-   Include Loader and Navigation State
-   ========================================================================== */
+/* html load function */
 function loadHTML(id, file) {
   fetch(file)
     .then((response) => {
@@ -88,7 +83,6 @@ function loadHTML(id, file) {
     })
     .catch((error) => console.error(error));
 }
-
 function setActiveNav() {
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
   const navLinks = document.querySelectorAll(".nav-list a");
@@ -100,11 +94,10 @@ function setActiveNav() {
   });
 }
 
-/* ==========================================================================
-   Home Slideshow
-   ========================================================================== */
+/* slideshow for home page */
 let slideIndex = 0;
 let slideTimer = null;
+
 
 function initSlideshow() {
   const slides = document.querySelectorAll(".slide");
@@ -140,9 +133,7 @@ function moveSlide(step) {
   showSlide(slideIndex + step);
 }
 
-/* ==========================================================================
-   Product Detail Rendering
-   ========================================================================== */
+/* loads product details */
 function initProductDetails() {
   const titleElement = document.getElementById("product-title");
   if (!titleElement) {
@@ -152,7 +143,6 @@ function initProductDetails() {
   const params = new URLSearchParams(window.location.search);
   const productId = params.get("id") || "1";
   const product = STORE_PRODUCTS[productId];
-
   if (!product) {
     titleElement.textContent = "Product not found";
     const description = document.getElementById("product-description");
@@ -168,6 +158,7 @@ function initProductDetails() {
   document.getElementById("product-type").textContent = product.type;
   document.getElementById("product-date").textContent = product.publishedDate;
   document.getElementById("product-price").textContent = `£${product.price.toFixed(2)}`;
+   
 
   const productImage = document.getElementById("product-image");
   if (productImage) {
@@ -181,17 +172,15 @@ function initProductDetails() {
   }
 }
 
-/* ==========================================================================
-   Basket CRUD Logic: add, update quantity, remove, clear
-   ========================================================================== */
+/* basket functions */
 function getCart() {
   return JSON.parse(localStorage.getItem("cart") || "[]");
 }
 
+
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
-
 function addToBasket(productId) {
   const product = STORE_PRODUCTS[productId];
   if (!product) {
@@ -220,6 +209,7 @@ function updateQty(productId, qty) {
     return;
   }
 
+   
   if (Number.isNaN(parsed) || parsed <= 0) {
     const filtered = cart.filter((entry) => entry.id !== productId);
     saveCart(filtered);
@@ -263,7 +253,7 @@ function displayBasket() {
       total += item.price * item.qty;
       return `
         <div class="basket-item">
-          <div>
+         <div>
             <strong>${item.title}</strong><br>
             <span class="muted">£${item.price.toFixed(2)} each</span>
           </div>
@@ -279,7 +269,7 @@ function displayBasket() {
             >
           </label>
           <strong>£${(item.price * item.qty).toFixed(2)}</strong>
-          <button class="btn btn-danger" type="button" onclick="removeItem('${item.id}')">Remove</button>
+         <button class="btn btn-danger" type="button" onclick="removeItem('${item.id}')">Remove</button>
         </div>
       `;
     })
@@ -288,16 +278,13 @@ function displayBasket() {
   totalElement.textContent = `£${total.toFixed(2)}`;
 }
 
-/* ==========================================================================
-   Common Page Init
-   ========================================================================== */
+/* listeners */
 document.addEventListener("DOMContentLoaded", () => {
   loadHTML("header", "inc/header.html");
   loadHTML("footer", "inc/footer.html");
   initSlideshow();
   initProductDetails();
   displayBasket();
-
   const slidePrev = document.getElementById("slide-prev");
   const slideNext = document.getElementById("slide-next");
   if (slidePrev) {
@@ -306,12 +293,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (slideNext) {
     slideNext.addEventListener("click", () => moveSlide(1));
   }
-
   const clearBtn = document.getElementById("clear-basket");
   if (clearBtn) {
     clearBtn.addEventListener("click", clearBasket);
   }
 });
+
 
 
 
