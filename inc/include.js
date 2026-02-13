@@ -15,51 +15,51 @@ const STORE_PRODUCTS = {
   },
   "2": {
     id: "2",
-    title: "Velvet Night Poster",
+    title: "Horror Poster",
     type: "Poster",
     price: 18.0,
     publishedDate: "2025-04-02",
-    image: "images/ss2.jpg",
+    image: "images/poster.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at turpis dapibus, ultricies lacus vel, pulvinar mauris. Etiam condimentum sodales sapien."
   },
   "3": {
     id: "3",
-    title: "Gallery Edition Mug",
+    title: "Horror Mug",
     type: "Homeware",
     price: 16.5,
     publishedDate: "2025-05-11",
-    image: "images/portrait.jpg",
+    image: "images/mug.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula enim quis risus dignissim, ac tincidunt lorem tincidunt. Cras iaculis sem nec leo volutpat."
   },
   "4": {
     id: "4",
-    title: "Chromatic Process Print",
+    title: "Horror Print",
     type: "Print",
     price: 46.0,
     publishedDate: "2025-06-20",
-    image: "images/ss1.webp",
+    image: "images/print.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed varius lorem. Donec suscipit sapien at pulvinar eleifend."
   },
   "5": {
     id: "5",
-    title: "Studio Notes Journal",
+    title: "Horror Journal",
     type: "Stationery",
     price: 12.0,
     publishedDate: "2025-08-01",
-    image: "images/ss2.jpg",
+    image: "images/journal.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus luctus vulputate justo, et feugiat dui ultricies ut. Nulla facilisi."
   },
   "6": {
     id: "6",
-    title: "Monochrome Tote",
+    title: "Horror Tote",
     type: "Accessories",
     price: 24.0,
     publishedDate: "2025-09-17",
-    image: "images/portrait.jpg",
+    image: "images/tote.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac enim eget lectus luctus ultrices. Aenean congue dignissim efficitur."
   }
@@ -312,4 +312,5 @@ document.addEventListener("DOMContentLoaded", () => {
     clearBtn.addEventListener("click", clearBasket);
   }
 });
+
 
