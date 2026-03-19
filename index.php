@@ -11,7 +11,9 @@
 </head>
 <body>
 <!-- site header -->
-<div id="header"></div>
+<?php 
+  include('inc/header.php'); 
+?>
 
 <main>
   <!-- Section with artist introduction and slideshow -->
@@ -68,8 +70,9 @@
 </main>
 
 <!-- Site footer -->
-<div id="footer"></div>
-  <script src="inc/include.js"></script>
+<?php 
+  include('inc/footer.php'); 
+?>
 </body>
 </html>
 
